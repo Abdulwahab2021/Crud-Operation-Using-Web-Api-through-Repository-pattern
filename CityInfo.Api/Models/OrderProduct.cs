@@ -1,5 +1,7 @@
 ﻿namespace CityInfo.Api.Models
 {
+
+    //Implement Order Product class
     public class OrderProduct
     {
 
