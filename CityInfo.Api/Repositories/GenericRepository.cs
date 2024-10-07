@@ -1,40 +1,85 @@
 ﻿
-using CityInfo.Api.DbContexts;
+using CityInfo.Api.Data;
+using Microsoft.EntityFrameworkCore;
 
-namespace CityInfo.Api.Repositories
+namespace CityInfo.Api.Repository
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
-    {
-        private readonly ApplicationDbContext _C
-        public GenericRepository(ApplicationDbContext context)
+    public class GenericRepository<T, TContext> : IGenericRepository<T, TContext>
+    where T : class
+    where TContext : DbContext
+    { 
+        protected readonly MyDbContext _myDbContext;
+        protected readonly DbSet<T> _dbSet;
+
+        public GenericRepository(MyDbContext myDbContext)
         {
-
-
-            _context = context;
+            _myDbContext = myDbContext;
+            _dbSet = myDbContext.Set<T>();
+        
         }
-        public Task AddAsync(T entity)
+        public virtual async Task<bool> AddAsync(T entity)
         {
-            throw new NotImplementedException();
+            await _dbSet.AddAsync(entity);
+
+         var result=   await _myDbContext.SaveChangesAsync();
+            if (result == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
-        public Task DeleteAsync(T entity)
+        public virtual async Task<bool> DeleteAsync(int Id)
         {
-            throw new NotImplementedException();
+            
+            var entity = await _dbSet.FindAsync(Id);
+            if (entity != null)
+            {
+             _dbSet.Remove(entity);
+          var results=  await _myDbContext.SaveChangesAsync();
+                if (results == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            return false;
         }
 
-        public Task<IEnumerable<T>> GetAllAsync()
+        public virtual async Task<IEnumerable<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+           var result= await _dbSet.ToListAsync();
+            return result;
         }
 
-        public Task<T> GetByIdAsync()
+        public virtual async Task<T> GetIDbAsync(int Id)
         {
-            throw new NotImplementedException();
+         return   await _dbSet.FindAsync(Id);
         }
 
-        public Task UpdateAsync(T entity)
+        public virtual async Task<bool> UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Update(entity);
+
+          var result=  await _myDbContext.SaveChangesAsync();
+            if(result == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+
         }
     }
 }

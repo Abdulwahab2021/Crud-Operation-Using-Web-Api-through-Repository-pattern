@@ -1,17 +1,17 @@
-﻿namespace CityInfo.Api.Repositories
+﻿using System.Linq.Expressions;
+
+namespace CityInfo.Api.Repository
 {
-    public interface IGenericRepository<T> where T : class
+    public interface IGenericRepository<T,TContext> where T : class where TContext : class
     {
+
         Task<IEnumerable<T>> GetAllAsync();
 
-        Task<T> GetByIdAsync();
+        Task<T> GetIDbAsync(int Id);
+        Task<bool> AddAsync(T entity);
 
-        Task AddAsync(T entity);
+        Task<bool> UpdateAsync(T entity);
 
-
-        Task UpdateAsync(T entity);
-        Task DeleteAsync(T entity);
-
-
+        Task<bool> DeleteAsync(int Id);
     }
 }

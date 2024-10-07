@@ -3,19 +3,17 @@
     public class Order
     {
 
-        public int Id { get; set; }
+           public int OrderId { get; set; }
 
-        public DateTime DateTime { get; set; }
+    public DateTime OrderDate { get; set; }
 
-        // Foreign Keys
-     public ICollection<Product> products { get; set; }
+    // Foreign Key
 
-        // Foreign Keys
-        public int CustomerId { get; set; }
-        public Customer Customer { get; set; }
+    public int CustomerId { get; set; }
 
+    public Customer Customer { get; set; }
 
-
+    public ICollection<OrderProduct>? OrderProducts { get; set; }
 
     }
 }
