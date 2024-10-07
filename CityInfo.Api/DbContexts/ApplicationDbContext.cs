@@ -68,8 +68,6 @@ namespace CityInfo.Api.DbContexts
           .HasOne(op => op.Order)
           .WithMany(op => op.OrderProducts)
           .HasForeignKey(op => op.OrderId);
-
-
       modelBuilder.Entity<OrderProduct>()
           .HasOne(op=>op.Product)
           .WithMany(op=>op.OrderProducts)

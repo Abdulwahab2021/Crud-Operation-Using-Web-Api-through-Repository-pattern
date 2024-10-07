@@ -7,10 +7,10 @@
 
     public DateTime OrderDate { get; set; }
 
-    // Foreign Key
-
+    
+   // Add Foreign Key
     public int CustomerId { get; set; }
-
+//Navigation property
     public Customer Customer { get; set; }
 
     public ICollection<OrderProduct>? OrderProducts { get; set; }
