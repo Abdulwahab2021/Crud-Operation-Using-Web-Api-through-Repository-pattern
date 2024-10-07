@@ -2,6 +2,7 @@
 
 namespace CityInfo.Api.Repository
 {
+       //Generic Repository
     public interface IGenericRepository<T,TContext> where T : class where TContext : class
     {
 

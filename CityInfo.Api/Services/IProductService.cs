@@ -2,6 +2,7 @@ using CityInfo.Api.Model;
 
 namespace CityInfo.Api.Services
 {
+    //IProductService
     public interface IProductService
     {
          Task<IEnumerable<Product>> GetAllProducts();

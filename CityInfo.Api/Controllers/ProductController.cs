@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CityInfo.Api.Controllers
 {
+    // productController
+
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase

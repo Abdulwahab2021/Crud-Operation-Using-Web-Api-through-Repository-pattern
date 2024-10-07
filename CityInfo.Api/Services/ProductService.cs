@@ -6,6 +6,8 @@ namespace CityInfo.Api.Services
 {
     public class ProductService : IProductService
     {
+
+        //  ProductService
         private readonly IProductRepository _productRepository;
 
         public ProductService(IProductRepository productRepository)

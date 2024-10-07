@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CityInfo.Api.Repository
 {
+    // Product repository
     public class ProductRepository:GenericRepository<Product,MyDbContext> , IProductRepository
 
     {

@@ -1,5 +1,7 @@
 ﻿namespace CityInfo.Api.Models
 {
+
+       //Category class
     public class Category
     {
        public int CategoryId { get; set; }

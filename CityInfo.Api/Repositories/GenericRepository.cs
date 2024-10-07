@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CityInfo.Api.Repository
 {
+
+    //Repository
     public class GenericRepository<T, TContext> : IGenericRepository<T, TContext>
     where T : class
     where TContext : DbContext

@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CityInfo.Api.DbContexts
 {
+
+    // ApplicationDbContext
     public class ApplicationDbContext: DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> dbContextOptions) : base(dbContextOptions) { }

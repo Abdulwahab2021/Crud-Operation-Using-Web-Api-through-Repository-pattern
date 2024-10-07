@@ -1,5 +1,6 @@
 ﻿namespace CityInfo.Api.Models
 {
+    //Customer class
     public class Customer
     {
 
